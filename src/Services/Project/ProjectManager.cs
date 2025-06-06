@@ -67,6 +67,16 @@ namespace AIWorkstation.Services.Projects
                 },
                 new ProjectTemplate
                 {
+                    Name = "Node.js Express API",
+                    Type = ProjectType.API,
+                    Description = "Express.js API with MongoDB, authentication, and testing",
+                    Technologies = new List<string> { "Node.js", "Express", "MongoDB", "JWT" },
+                    PowerShellCommand = "newnode",
+                    Icon = "Nodejs",
+                    IsAdvanced = true
+                },
+                new ProjectTemplate
+                {
                     Name = "Python Automation Script",
                     Type = ProjectType.Python,
                     Description = "Task automation with file handling, email, and scheduling",
@@ -84,6 +94,16 @@ namespace AIWorkstation.Services.Projects
                     PowerShellCommand = "newwpf",
                     Icon = "DesktopWindows",
                     IsAdvanced = true
+                },
+                new ProjectTemplate
+                {
+                    Name = "Data Analysis Project",
+                    Type = ProjectType.AI_ML,
+                    Description = "Data analysis with Pandas, Matplotlib, and statistical modeling",
+                    Technologies = new List<string> { "Python", "Pandas", "Matplotlib", "Seaborn", "Jupyter" },
+                    PowerShellCommand = "newdata",
+                    Icon = "ChartLine",
+                    IsAdvanced = false
                 }
             };
         }
@@ -102,7 +122,7 @@ namespace AIWorkstation.Services.Projects
                 Directory.CreateDirectory(projectPath);
 
                 // Run PowerShell command to create project structure
-                await RunPowerShellCommand($"{template.PowerShellCommand} {projectName}");
+                await RunPowerShellCommand($"{template.PowerShellCommand} \"{projectName}\"");
 
                 // Create project object
                 var project = new Project
@@ -179,11 +199,14 @@ namespace AIWorkstation.Services.Projects
 
             using (var process = Process.Start(startInfo))
             {
-                await process.WaitForExitAsync();
-                if (process.ExitCode != 0)
+                if (process != null)
                 {
-                    var error = await process.StandardError.ReadToEndAsync();
-                    throw new Exception($"PowerShell command failed: {error}");
+                    await process.WaitForExitAsync();
+                    if (process.ExitCode != 0)
+                    {
+                        var error = await process.StandardError.ReadToEndAsync();
+                        throw new Exception($"PowerShell command failed: {error}");
+                    }
                 }
             }
         }
