@@ -1,0 +1,45 @@
+# Build Outputs
+bin/
+obj/
+out/
+publish/
+
+# IDE Files
+.vs/
+.vscode/settings.json
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# AI Models (too large for git)
+*.gguf
+*.bin
+*.safetensors
+
+# Logs
+logs/
+*.log
+*.log.*
+
+# Temporary Files
+tmp/
+temp/
+*.tmp
+*.temp
+
+# Configuration (may contain secrets)
+appsettings.Production.json
+appsettings.Development.json
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Package Files
+*.nupkg
+*.snupkg
+
+# Backup Files
+*.bak
+*.backup
