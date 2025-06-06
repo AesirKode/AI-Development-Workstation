@@ -12,7 +12,6 @@
         FontFamily="{materialDesign:MaterialDesignFont}">
 
     <Window.Resources>
-        <!-- Custom Styles for ADHD-Friendly Design -->
         <Style x:Key="CategoryButtonStyle" TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
             <Setter Property="Height" Value="80"/>
             <Setter Property="Width" Value="160"/>
@@ -39,9 +38,9 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="80"/>  <!-- Header -->
-            <RowDefinition Height="*"/>   <!-- Main Content -->
-            <RowDefinition Height="60"/>  <!-- Status Bar -->
+            <RowDefinition Height="80"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="60"/>
         </Grid.RowDefinitions>
 
         <!-- Header Section -->
@@ -54,7 +53,6 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 
-                <!-- Title and Welcome -->
                 <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
                     <materialDesign:PackIcon Kind="Robot" Height="40" Width="40" 
                                            Foreground="{DynamicResource MaterialDesignDarkForeground}"/>
@@ -69,7 +67,6 @@
                     </StackPanel>
                 </StackPanel>
                 
-                <!-- System Status -->
                 <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" Margin="20,0">
                     <materialDesign:PackIcon Kind="Memory" Height="20" Width="20" 
                                            Foreground="{DynamicResource PrimaryHueMidBrush}"/>
@@ -84,7 +81,6 @@
                              Foreground="{DynamicResource MaterialDesignDarkForeground}"/>
                 </StackPanel>
                 
-                <!-- Quick Settings -->
                 <Button Grid.Column="2" Style="{StaticResource MaterialDesignIconButton}" 
                         ToolTip="Settings" Click="SettingsButton_Click">
                     <materialDesign:PackIcon Kind="Settings" Height="24" Width="24" 
@@ -96,12 +92,12 @@
         <!-- Main Content Area -->
         <Grid Grid.Row="1" Margin="20">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="300"/>  <!-- Left Panel -->
-                <ColumnDefinition Width="*"/>    <!-- Main Work Area -->
-                <ColumnDefinition Width="300"/>  <!-- Right Panel -->
+                <ColumnDefinition Width="300"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="300"/>
             </Grid.ColumnDefinitions>
 
-            <!-- Left Panel - Quick Categories -->
+            <!-- Left Panel -->
             <Border Grid.Column="0" Background="{DynamicResource MaterialDesignCardBackground}" 
                     CornerRadius="10" Padding="15" Margin="0,0,10,0"
                     materialDesign:ShadowAssist.ShadowDepth="Depth1">
@@ -109,7 +105,6 @@
                     <StackPanel>
                         <TextBlock Text="🎯 Quick Actions" Style="{StaticResource HeaderTextStyle}"/>
                         
-                        <!-- AI Categories -->
                         <Button Style="{StaticResource CategoryButtonStyle}" 
                                 Background="{DynamicResource PrimaryHueMidBrush}"
                                 Click="AIChat_Click">
@@ -126,7 +121,7 @@
                             <StackPanel>
                                 <materialDesign:PackIcon Kind="FolderMultiple" Height="24" Width="24"/>
                                 <TextBlock Text="Projects" FontWeight="Bold" Margin="0,5,0,0"/>
-                                <TextBlock Text="Create &amp; manage" FontSize="10" Opacity="0.8"/>
+                                <TextBlock Text="Create and manage" FontSize="10" Opacity="0.8"/>
                             </StackPanel>
                         </Button>
                         
@@ -146,11 +141,20 @@
                             <StackPanel>
                                 <materialDesign:PackIcon Kind="Monitor" Height="24" Width="24"/>
                                 <TextBlock Text="System" FontWeight="Bold" Margin="0,5,0,0"/>
-                                <TextBlock Text="Monitor &amp; control" FontSize="10" Opacity="0.8"/>
+                                <TextBlock Text="Monitor and control" FontSize="10" Opacity="0.8"/>
                             </StackPanel>
                         </Button>
                         
-                        <!-- Memory Helper for ADHD -->
+                        <Button Style="{StaticResource CategoryButtonStyle}" 
+                                Background="#FFFF6B6B"
+                                Click="Agents_Click">
+                            <StackPanel>
+                                <materialDesign:PackIcon Kind="Robot" Height="24" Width="24"/>
+                                <TextBlock Text="Agents" FontWeight="Bold" Margin="0,5,0,0"/>
+                                <TextBlock Text="AI agent system" FontSize="10" Opacity="0.8"/>
+                            </StackPanel>
+                        </Button>
+                        
                         <Border Background="#FFF59E" CornerRadius="8" Padding="10" Margin="0,20,0,0">
                             <StackPanel>
                                 <TextBlock Text="🧠 Memory Helper" FontWeight="Bold" FontSize="14"/>
@@ -172,7 +176,7 @@
                           Style="{StaticResource MaterialDesignTabControl}"
                           materialDesign:ColorZoneAssist.Mode="PrimaryMid">
                     
-                    <!-- Welcome Tab -->
+                    <!-- Home Tab -->
                     <TabItem Header="🏠 Home" Style="{StaticResource CategoryTabStyle}">
                         <Grid Margin="20">
                             <Grid.RowDefinitions>
@@ -180,7 +184,6 @@
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
                             
-                            <!-- Welcome Section -->
                             <StackPanel Grid.Row="0">
                                 <TextBlock Text="Welcome to Your AI-Powered Development Environment!" 
                                          Style="{StaticResource HeaderTextStyle}"/>
@@ -188,7 +191,6 @@
                                          FontSize="16" Margin="0,0,0,20" Opacity="0.8"/>
                             </StackPanel>
                             
-                            <!-- Quick Start Actions -->
                             <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
                                 <WrapPanel Orientation="Horizontal">
                                     <Button Content="🐍 Create Python Project" 
@@ -240,7 +242,6 @@
                                 <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
                             
-                            <!-- Model Selection -->
                             <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,10">
                                 <TextBlock Text="AI Model:" VerticalAlignment="Center" Margin="0,0,10,0"/>
                                 <ComboBox x:Name="ModelSelector" Width="200" 
@@ -261,13 +262,11 @@
                                       Click="SmartModelSelect_Click"/>
                             </StackPanel>
                             
-                            <!-- Chat Area -->
                             <Border Grid.Row="1" Background="{DynamicResource MaterialDesignCardBackground}" 
                                   CornerRadius="10" Padding="15"
                                   materialDesign:ShadowAssist.ShadowDepth="Depth1">
                                 <ScrollViewer x:Name="ChatScrollViewer" VerticalScrollBarVisibility="Auto">
                                     <StackPanel x:Name="ChatPanel">
-                                        <!-- Chat messages will be added here dynamically -->
                                         <Border Background="#E3F2FD" CornerRadius="10" Padding="10" Margin="0,0,0,10">
                                             <TextBlock Text="👋 Hello David! I'm your AI assistant. I can help with coding, debugging, project creation, and more. What would you like to work on today?"
                                                      TextWrapping="Wrap"/>
@@ -276,7 +275,6 @@
                                 </ScrollViewer>
                             </Border>
                             
-                            <!-- Input Area -->
                             <Grid Grid.Row="2" Margin="0,10,0,0">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
@@ -318,7 +316,6 @@
                             
                             <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
                                 <StackPanel x:Name="ProjectsPanel">
-                                    <!-- Project cards will be added here dynamically -->
                                     <Border Background="{DynamicResource MaterialDesignCardBackground}" 
                                           CornerRadius="10" Padding="15" Margin="0,0,0,10"
                                           materialDesign:ShadowAssist.ShadowDepth="Depth1">
@@ -344,10 +341,95 @@
                             </ScrollViewer>
                         </Grid>
                     </TabItem>
+
+                    <!-- Agents Tab -->
+                    <TabItem Header="🤖 Agents" Style="{StaticResource CategoryTabStyle}">
+                        <Grid Margin="20">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            
+                            <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,20">
+                                <TextBlock Text="🤖 AI Agent System" Style="{StaticResource HeaderTextStyle}"/>
+                                <Button Content="🔄 Refresh Status" 
+                                      Style="{StaticResource QuickActionButtonStyle}"
+                                      Background="{DynamicResource SecondaryHueMidBrush}"
+                                      Margin="20,0,0,0"
+                                      Click="RefreshAgents_Click"/>
+                            </StackPanel>
+                            
+                            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                                <StackPanel>
+                                    <Border Background="{DynamicResource MaterialDesignCardBackground}" 
+                                          CornerRadius="10" Padding="20" Margin="0,0,0,20"
+                                          materialDesign:ShadowAssist.ShadowDepth="Depth1">
+                                        <StackPanel>
+                                            <TextBlock Text="🎯 Active Agents" FontWeight="Bold" FontSize="18" Margin="0,0,0,15"/>
+                                            
+                                            <Grid x:Name="AgentsStatusGrid">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+                                                
+                                                <Border Grid.Column="0" Background="#E3F2FD" CornerRadius="8" Padding="15" Margin="0,0,10,0">
+                                                    <StackPanel>
+                                                        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                                                            <materialDesign:PackIcon Kind="Code" Height="24" Width="24" Foreground="#1976D2"/>
+                                                            <TextBlock Text="CodeAgent" FontWeight="Bold" FontSize="16" Margin="10,0,0,0"/>
+                                                        </StackPanel>
+                                                        <TextBlock Text="Handles coding tasks, debugging, and code review" 
+                                                                 TextWrapping="Wrap" FontSize="12" Opacity="0.8" Margin="0,0,0,10"/>
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <Ellipse Width="8" Height="8" Fill="#4CAF50" Margin="0,0,5,0"/>
+                                                            <TextBlock Text="Active" FontSize="11" Foreground="#4CAF50"/>
+                                                        </StackPanel>
+                                                        <TextBlock Text="Uses: CodeLlama, DeepSeek Coder" FontSize="10" Opacity="0.6" Margin="0,5,0,0"/>
+                                                    </StackPanel>
+                                                </Border>
+                                                
+                                                <Border Grid.Column="1" Background="#E8F5E8" CornerRadius="8" Padding="15" Margin="10,0,0,0">
+                                                    <StackPanel>
+                                                        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                                                            <materialDesign:PackIcon Kind="Monitor" Height="24" Width="24" Foreground="#388E3C"/>
+                                                            <TextBlock Text="SystemAgent" FontWeight="Bold" FontSize="16" Margin="10,0,0,0"/>
+                                                        </StackPanel>
+                                                        <TextBlock Text="Monitors performance, GPU status, and system operations" 
+                                                                 TextWrapping="Wrap" FontSize="12" Opacity="0.8" Margin="0,0,0,10"/>
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <Ellipse Width="8" Height="8" Fill="#4CAF50" Margin="0,0,5,0"/>
+                                                            <TextBlock Text="Active" FontSize="11" Foreground="#4CAF50"/>
+                                                        </StackPanel>
+                                                        <TextBlock Text="Uses: Llama 3.2, System APIs" FontSize="10" Opacity="0.6" Margin="0,5,0,0"/>
+                                                    </StackPanel>
+                                                </Border>
+                                            </Grid>
+                                            
+                                            <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+                                                <Button Content="Test CodeAgent" 
+                                                      Style="{StaticResource QuickActionButtonStyle}"
+                                                      Background="#FF1976D2"
+                                                      Width="150" Margin="0,0,10,0"
+                                                      Click="TestCodeAgent_Click"/>
+                                                <Button Content="Test SystemAgent" 
+                                                      Style="{StaticResource QuickActionButtonStyle}"
+                                                      Background="#FF388E3C"
+                                                      Width="150"
+                                                      Click="TestSystemAgent_Click"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </Border>
+                                </StackPanel>
+                            </ScrollViewer>
+                        </Grid>
+                    </TabItem>
+                
+                    
                 </TabControl>
             </Grid>
 
-            <!-- Right Panel - System Info & Quick Controls -->
+            <!-- Right Panel -->
             <Border Grid.Column="2" Background="{DynamicResource MaterialDesignCardBackground}" 
                     CornerRadius="10" Padding="15" Margin="10,0,0,0"
                     materialDesign:ShadowAssist.ShadowDepth="Depth1">
@@ -355,7 +437,6 @@
                     <StackPanel>
                         <TextBlock Text="📊 System Status" Style="{StaticResource HeaderTextStyle}"/>
                         
-                        <!-- GPU Status -->
                         <Border Background="#E8F5E8" CornerRadius="8" Padding="10" Margin="0,0,0,10">
                             <StackPanel>
                                 <StackPanel Orientation="Horizontal">
@@ -368,7 +449,6 @@
                             </StackPanel>
                         </Border>
                         
-                        <!-- AI Models Status -->
                         <Border Background="#E3F2FD" CornerRadius="8" Padding="10" Margin="0,0,0,10">
                             <StackPanel>
                                 <StackPanel Orientation="Horizontal">
@@ -381,7 +461,6 @@
                             </StackPanel>
                         </Border>
                         
-                        <!-- PowerShell Status -->
                         <Border Background="#F3E5F5" CornerRadius="8" Padding="10" Margin="0,0,0,20">
                             <StackPanel>
                                 <StackPanel Orientation="Horizontal">
@@ -394,7 +473,6 @@
                             </StackPanel>
                         </Border>
                         
-                        <!-- Quick Controls -->
                         <TextBlock Text="⚡ Quick Controls" FontWeight="Bold" FontSize="16" Margin="0,0,0,10"/>
                         
                         <Button Content="🎮 Open Command GUI" 
@@ -420,20 +498,6 @@
                               Background="#FFEC4899"
                               Click="MusicControl_Click"
                               Margin="0,0,0,20"/>
-                        
-                        <!-- Recent Activity -->
-                        <TextBlock Text="📝 Recent Activity" FontWeight="Bold" FontSize="16" Margin="0,0,0,10"/>
-                        
-                        <StackPanel x:Name="RecentActivityPanel">
-                            <Border Background="{DynamicResource MaterialDesignDivider}" 
-                                  Height="1" Margin="0,0,0,5"/>
-                            <TextBlock Text="🚀 Project scaffolding completed" 
-                                     FontSize="12" Margin="0,0,0,5"/>
-                            <TextBlock Text="🤖 6 AI models configured" 
-                                     FontSize="12" Margin="0,0,0,5"/>
-                            <TextBlock Text="⚡ 142 PowerShell commands loaded" 
-                                     FontSize="12" Margin="0,0,0,5"/>
-                        </StackPanel>
                     </StackPanel>
                 </ScrollViewer>
             </Border>
