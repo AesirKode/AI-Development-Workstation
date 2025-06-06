@@ -5,7 +5,7 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net8.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
-    <ApplicationIcon>assets\Icons\workstation.ico</ApplicationIcon>
+    
     <AssemblyTitle>AI Development Workstation</AssemblyTitle>
     <AssemblyDescription>Revolutionary AI-powered development environment</AssemblyDescription>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
@@ -37,4 +37,5 @@
   </ItemGroup>
 
 </Project>
+
 

@@ -21,7 +21,7 @@ namespace AIWorkstation
         private readonly string _ollamaBaseUrl = "http://localhost:11434";
         private readonly DispatcherTimer _timeTimer;
         private readonly DispatcherTimer _statusTimer;
-        private string _currentModel = "llama3.2";
+        
         
         public MainWindow()
         {
@@ -70,9 +70,9 @@ namespace AIWorkstation
             TimeText.Text = DateTime.Now.ToString("HH:mm:ss");
         }
 
-        private async void StatusTimer_Tick(object sender, EventArgs e)
+        private void StatusTimer_Tick(object sender, EventArgs e)
         {
-            await UpdateSystemStatus();
+            _ = UpdateSystemStatus();
         }
 
         private async Task UpdateSystemStatus()
@@ -538,3 +538,5 @@ namespace AIWorkstation
         }
     }
 }
+
+

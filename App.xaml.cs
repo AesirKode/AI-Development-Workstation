@@ -1,7 +1,6 @@
 using System.Windows;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
-using AIWorkstation.Services;
 
 namespace AIWorkstation
 {
@@ -16,14 +15,14 @@ namespace AIWorkstation
             // Configuration setup
             var configuration = new ConfigurationBuilder()
                 .SetBasePath(System.IO.Directory.GetCurrentDirectory())
-                .AddJsonFile("config/appsettings.json", optional: false, reloadOnChange: true)
+                .AddJsonFile("config/appsettings.json", optional: true, reloadOnChange: true)
                 .Build();
 
             // Service registration
             var serviceCollection = new ServiceCollection();
             serviceCollection.AddSingleton<IConfiguration>(configuration);
             
-            // Add services here when we create them
+            // Future: Add services here when we create them
             // serviceCollection.AddSingleton<IAIService, AIService>();
             // serviceCollection.AddSingleton<IPowerShellService, PowerShellService>();
 
